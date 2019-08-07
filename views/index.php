@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Slim 3</title>
+        <title>Slim 123</title>
         <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
         <style>
             body {
@@ -27,7 +27,7 @@
     </head>
     <body>
         <h1>Slim</h1>
-        <div>a microframework for PHP</div>
+        <div>a microframework for PHP {{name}}</div>
 
         <?php if (isset($name)) : ?>
             <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
