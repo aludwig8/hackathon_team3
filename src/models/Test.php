@@ -1,12 +1,14 @@
 <?php 
 
+namespace Src\Models;
+
 use Model;
+use ORM;
 
 class Test extends Model {
 
-    
-    function __constrict()
+    function __construct()
     {
-        # code...
+        dd(new ORM);
     }
 }

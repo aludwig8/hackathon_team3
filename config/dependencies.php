@@ -10,7 +10,7 @@ return function (App $app) {
     //     $settings = $c->get('settings')['renderer'];
     //     return new \Slim\Views\PhpRenderer($settings['template_path']);
     // };
-
+    
     // Register Twig View helper
     $container['view'] = function ($c) {
         $settings = $c->get('settings')['renderer'];
@@ -25,6 +25,13 @@ return function (App $app) {
 
         return $view;
     };
+
+    // Register 
+    $container['controller'] = function ($c){
+        
+        return new \Application\Controller;
+    };
+
     // monolog
     // $container['logger'] = function ($c) {
     //     $settings = $c->get('settings')['logger'];

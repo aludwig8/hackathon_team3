@@ -9,7 +9,8 @@ return function (App $app) {
     $container = $app->getContainer();
 
     // Define named route
-    $app->get('/test', function ($request, $response, $args) {
+    $app->get('/', function ($request, $response, $args) {
+        // return $this->controller->bind('Test@test');
         return $this->view->render($response, 'index.php', [
             'name' => 'test ',
         ]);

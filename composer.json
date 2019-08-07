@@ -10,7 +10,12 @@
         "slim/slim": "^3.12",
         "slim/twig-view": "^2.5",
         "twig/twig": "^2.11"
-    },
+    },"autoload": {
+        "psr-4": {
+          "Src\\": "src/",
+          "Application\\": "application/"
+        }
+      },
     "config": {
         "process-timeout": 0,
         "sort-packages": true
