@@ -16,6 +16,42 @@ return function (App $app) {
         ]);
     })->setName('profile');
 
+    $app->get('/about', function ($request, $response, $args) {
+        return $this->view->render($response, 'about.php', [
+            'name' => 'test ',
+        ]);
+    })->setName('profile');
+
+    $app->get('/products', function ($request, $response, $args) {
+        return $this->view->render($response, 'products.php', [
+            'name' => 'test ',
+        ]);
+    })->setName('profile');
+
+    $app->get('/shopping-cart', function ($request, $response, $args) {
+        return $this->view->render($response, 'cart.php', [
+            'name' => 'test ',
+        ]);
+    })->setName('profile');
+
+    $app->get('/sign-up', function ($request, $response, $args) {
+        return $this->view->render($response, 'signup.php', [
+            'name' => 'test ',
+        ]);
+    })->setName('profile');
+
+    $app->get('/log-in', function ($request, $response, $args) {
+        return $this->view->render($response, 'login.php', [
+            'name' => 'test ',
+        ]);
+    })->setName('profile');
+
+    $app->get('/layout', function ($request, $response, $args) {
+        return $this->view->render($response, 'layout.php', [
+            'name' => 'test ',
+        ]);
+    })->setName('profile');
+
     // $app->get('/', function (Request $request, Response $response, $args)  use ($container){
 
     //     // Render index view
