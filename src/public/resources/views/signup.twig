@@ -4,20 +4,21 @@
 {% block content %}
     <div class="header">
         <h2>Register</h2>
+        <p style="color:red;">{{message}}</p>
     </div>
 
     <form method="post" action="{{ path_for('user.signup') }}">
         <div class="input-group">
             <label>Name</label>
-            <input type="text" name="email" value="">
-        </div>
-        <div class="input-group">
-            <label>Surname</label>
             <input type="text" name="firstname" value="">
         </div>
         <div class="input-group">
+            <label>Surname</label>
+            <input type="text" name="lastname" value="">
+        </div>
+        <div class="input-group">
             <label>Email</label>
-            <input type="email" name="lastname" value="">
+            <input type="email" name="email" value="">
         </div>
         <div class="input-group">
             <label>Password</label>

@@ -1,10 +1,12 @@
 <?php
 
-
 //Products
 $app->get('/','ProductController:index')->setName('products');
 $app->get('/product/category/{id}','ProductController:category')->setName('products.catgory');
 $app->get('/product/{id}','ProductController:show')->setName('product');
+
+$app->get('/cart/add','ProductController:cartadd')->setName('cartadd');
+
 
 
 //Sing in, Sign up(T)
@@ -12,6 +14,7 @@ $app->get('/signup','UserController:signup_index')->setName('user.signup_index')
 $app->post('/signup','UserController:signup')->setName('user.signup');
 $app->get('/signin','UserController:signin_index')->setName('user.signin_index');
 $app->post('/signin','UserController:signin')->setName('user.signin');
+$app->get('/logout','UserController:logout')->setName('user.logout');
 
 //Orders
 $app->get('/order','OrderController:index')->setName('orders');

@@ -6,6 +6,9 @@
     {% endfor %}
 {% endblock %}
 
+{% block user %}
+{{user_message | raw}}
+{% endblock %}
 
 {% block content %}
 
@@ -14,9 +17,9 @@
 {% for p in product %}
 	<!-- <a href="#"><img class="thumb_medium" src="assets/img/unique-handmade-1.jpg" alt=""></a> -->
 	<div class="float-left box">
-		<a href="produkti.php?id=28"><img class="thumb_medium" src="{{p.product_image}}" alt=""></a>
+		<a href="/product/{{ p.product_id}}"><img class="thumb_medium" src="{{p.product_image}}" alt=""></a>
 
-		<h1><a href="produkti.php?id=28">{{ p.product_long_desc }}</p>
+		<h1><a href="/product/{{ p.product_id}}">{{ p.product_short_desc }}</p>
 		<div class="price">€{{p.product_price}}</div>
 		<a href="cartAction.php?action=addToCart&id=28"><div class="shporta-icon-product button1"><img src="{{base_url()}}/assets/img/shporta.png" width="32" height="32"></div></a>
 	</div>

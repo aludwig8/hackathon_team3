@@ -4,6 +4,7 @@ namespace Hackathon\Controllers;
 
 use Hackathon\Models\Product;
 use Hackathon\Models\Category;
+use Hackathon\Models\Order;
 
 class ProductController extends Controller
 {
@@ -17,9 +18,20 @@ class ProductController extends Controller
 
         $categories = Category::find_many();
 
+        
+        if(isset($_SESSION['user'])){
+            $user = $_SESSION['user'];
+            $user_message = "<a href='/logout'>LOGOUT</a>";;
+        }else{
+
+            $user_message = "<a href='/signin'>LOGIN</a>";
+        }
+
+
 		return $this->container->view->render($response, 'products.twig', [
-			"product"     => $products, 
-            "categories"  => $categories
+			"product"             => $products, 
+            "categories"          => $categories,
+            "user_message"        => $user_message
 		]);
     }
 
@@ -125,10 +137,37 @@ class ProductController extends Controller
 
         $categories = Category::find_many();
 
+
+        if(isset($_SESSION['user'])){
+            $user = $_SESSION['user'];
+            $user_message = "<a href='/logout'>LOGOUT</a>";;
+        }else{
+
+            $user_message = "<a href='/signin'>LOGIN</a>";
+        }
+
+
         return $this->container->view->render($response, 'products.category.twig', [
             "product"    => $product, 
-            "categories" => $categories
+            "categories" => $categories,
+            "user_message"=> $user_message
+
         ]);
+    }
+
+    public function cartadd($request, $response){
+        
+        $product_id = $_GET['id'];
+        $product = Product::where('product_id', $product_id)->find_one();
+
+        $order            =         Order::create();
+        $order->order_user_id     = $_SESSION['user']['id'];
+        $order->order_product_id    = $product_id;
+        $order->order_quantity   = 1;
+        $order->order_price = $product->product_price;
+        $order->save();
+
+        return $response->withRedirect($this->router->pathFor('products'));
     }
 
 
