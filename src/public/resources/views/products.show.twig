@@ -1,0 +1,102 @@
+{% extends 'layouts/app.twig' %}
+
+
+{% block categories %}
+	{% for c in categories %}
+        <li><a href="/product/category/{{c.category_id}}">{{ c.category_name }}</a></li>
+    {% endfor %}
+{% endblock %}
+
+
+{% block content %}
+
+	<section class="col-main content">
+
+				<div class="float-left produkti-imazhi">
+					<a href="#"><img src="{{product.product_image}}" width="515" alt=""></a>
+
+				</div>
+
+				<div class="float-right produkti-detajet">
+					
+					<h1>{{product.product_short_desc}}</h1>
+					<br>
+					<div class="price">€{{product.product_price}}</div>
+
+					<table>
+						<tr class="productitm">
+						            <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+						            	<td><input type="number" name="sasia" min="0" max="99" value="1" class="qtyinput"></td>
+						            	<td><a href="cartAction.php?action=addToCart&id=28"><div class="shporta-icon-product button1"><img src="{{base_url()}}/assets/img/shporta.png" width="32" height="32"></div></a></td>
+						          	</form>
+						          </tr>
+					</table>
+				</div>
+
+				<div class="float-left produkti-imazhi">
+					<h1>Description</h1>
+					<p><p>{{product.product_long_desc}}</p></p>	
+				</div>
+
+			
+				<div class="clear"></div>
+
+		</section>
+				<aside class="col-right">
+			
+			<div class="box">
+				<h2>Informacion</h2>
+				Per cdo parregullsi gjat blerjes se produkteve ju lutem na shkruani ne kete email <b>contact@unicraft.com</b> ose ne nr tel: <b>+38341123456</b>.
+				
+				<hr>
+				
+				<h2>Sociale</h2>
+				<div class="font-awesome">
+					<a href="#"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-pinterest-square fa-2x" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-tumblr-square  fa-2x" aria-hidden="true"></i></a>
+				</div>
+				<hr>
+				<div class="font-awesome">
+					<p>Pagesat mund te kryhen ne keto menyra:</p>
+					<a href="#"><i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-cc-discover fa-2x" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-cc-paypal fa-2x" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</aside>	</div>
+	<div class="clear"></div>
+	<section class="color-pre-footer">
+		<div class="pre-footer">
+
+			<div class="float-left">
+				<b>Informatat</b>
+				<ul>
+					<li><a href="#">Dergesat</a></li>
+					<li><a href="#">Kushtet dhe Termet</a></li>
+					<li><a href="#">Rreth Nesh</a></li>
+					<li><a href="#">Pyetje te shpeshta (FAQ)</a></li>
+				</ul>
+			</div>
+
+			<div class="float-left">
+				<b>Sherbimi</b>
+				<ul>
+					<li><a href="#">Na Kontaktoni</a></li>
+					<li><a href="#">Kujdesi ndaj klienteve</a></li>
+				</ul>
+			</div>
+
+			<div class="float-left">
+				<b>Adresa</b>
+				<ul>
+					<li>Rr. Ilaz Kodra, Dardani<br>SU 7/1 HY-I Nr.12<br>Prishtine, 10000</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+{% endblock %}

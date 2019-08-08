@@ -1,14 +1,19 @@
 {% extends 'layouts/app.twig' %}
+
 {% block content %}
 	
 	<h1>TEST:</h1>
 
-	{% for item in products %}
-            <p>{{ attr.product_name }}</p>
+	{% for item in article %}
+        <p>{{ item.role_name }}</p>
     {% endfor %}
 
 
     <form action="{{ path_for('user.store') }}" method="post">
+    email<input type="email" name="email"><br>
+    first name<input type="text" name="firstname"><br>
+    last name<input type="text" name="lastname"><br>
+    password<input type="password" name="password"><br>
 
     <input type="submit" name="submit">
     </form>

@@ -1,29 +1,75 @@
-<!DOCTYPE html>
-
-<html lang="en">
+<!doctype html>
+<html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Hackathon</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<title>UniCraft - Handmade Store</title>
+		<meta charset="utf-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<link rel="icon" type="image/png" href="{{ base_url() }}/assets/img/logo.png">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}/assets/css/style.css">
+		<link type="text/css" rel="stylesheet" href="{{ base_url() }}/assets/css/slider.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="{{ base_url() }}/assets/js/contact.js"></script>
 
-		<link rel="stylesheet" href="{{ base_url() }}/assets/css/style.css">
+		<link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
 
+	    <script>
+	    function updateCartItem(obj,id){
+	        $.get("cartAction.php", {action:"updateCartItem", id:id, qty:obj.value}, function(data){
+	            if(data == 'ok'){
+	                location.reload();
+	            }else{
+	                alert('Cart update failed, please try again.');
+	            }
+	        });
+	    }
+	    </script>
 	</head>
 	<body>
+	<header class="header">
+		<div class="top">
+			<div class="search">
+				<a href="{{path_for('user.signin') }}"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a>
+			</div>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="{{ path_for('products') }}" class="active" >Home</a></li>
+				<li class="dropdown"><a href="#" class="">Categories</a>
+					<ul class="dropdown-menu">
+						{% block categories %}
 
-	<div class="container">
+						{% endblock %} 
+					</ul>
+				</li>
+				<li><a href="about.php" class="" >About us</a></li>
 
+				<a href="shporta.php"><div class="shporta-icon-menu button1"><img src="{{ base_url() }}/assets/img/shporta.png" width="28" height="28"></div></a>
+				<li class="float-right"><a href="shporta.php" class="">Cart</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="main">
 		{% block content %}
 
 		{% endblock %}
-
-
 	</div>
 
+	
+<script src="{{ base_url() }}/assets/js/myscript.js"></script>
+<script src="{{ base_url() }}/assets/js/jquery-1.4.2.min.js"></script>
+<script src="{{ base_url() }}/assets/js/slider.js"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<div class="clear"></div>
+	
 
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<div class="clear"></div>
+
+	<footer>
+		<div class="fbottom">
+			<small>Copyright &copy; 2019 All right reserved.</small>
+		</div>
+	</footer>
 
 	</body>
 </html>

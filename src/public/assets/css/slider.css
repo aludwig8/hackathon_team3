@@ -1,0 +1,59 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+#container{
+    width:892px;
+    height:324px;
+    position:relative;
+}
+
+#container .prevButton{
+    height:72px;
+    width:68px;
+    position:absolute;
+    background:url('../img/arrows.png') no-repeat;
+    top:40%;
+    cursor:pointer;
+    z-index:2000;
+    background-position:left top;
+    left:0
+}
+
+#container .prevButton:hover{ background-position:left bottom;left:0;}
+
+#container .nextButton{
+    height:72px;
+    width:68px;
+    position:absolute;
+    background:url('../img/arrows.png') no-repeat;
+    top:40%;
+    cursor:pointer;
+    z-index:2000;
+    background-position:right top;
+    right:0
+}
+
+#container .nextButton:hover{background-position:right bottom;right:0;}
+
+#container ul{
+    width:892px;
+    height:324px;
+    list-style:none outside none;
+    position:relative;
+    overflow:hidden;
+    padding: 0px;
+}
+
+#container li:first-child{
+    display:list-item;
+    position:absolute;
+}
+
+#container li{
+    position:absolute;
+    display:none;
+}
+
+

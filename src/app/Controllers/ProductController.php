@@ -3,6 +3,7 @@
 namespace Hackathon\Controllers;
 
 use Hackathon\Models\Product;
+use Hackathon\Models\Category;
 
 class ProductController extends Controller
 {
@@ -13,8 +14,12 @@ class ProductController extends Controller
     public function index($request, $response)
     {
         $products	= Product::find_many();
-		return $this->container->view->render($response, 'Place the appropriate view here', [
-			"products"    => $products
+
+        $categories = Category::find_many();
+
+		return $this->container->view->render($response, 'products.twig', [
+			"product"     => $products, 
+            "categories"  => $categories
 		]);
     }
 
@@ -57,8 +62,12 @@ class ProductController extends Controller
     {
         $id         = $request->getAttribute('id');
         $product	= Product::find_one($id);
-        return $this->container->view->render($response, 'Place the appropriate view here', [
-			"product"    => $product
+
+        $categories = Category::find_many();
+
+        return $this->container->view->render($response, 'products.show.twig', [
+			"product"    => $product, 
+            "categories" => $categories
 		]);
     }
 
@@ -101,9 +110,26 @@ class ProductController extends Controller
     public function destroy($request, $response)
     {
         $id         = $request->getAttribute('id');
-        $product   = Product::find_one($id);
+        $product    = Product::find_one($id);
         $product->delete();
 
         return $response->withRedirect($this->router->pathFor('products'));
     }
+
+
+    //Show Category
+     public function category($request, $response)
+    {
+        $id         = $request->getAttribute('id');
+        $product    = Product::where('product_category_id', $id)->find_many($id);
+
+        $categories = Category::find_many();
+
+        return $this->container->view->render($response, 'products.category.twig', [
+            "product"    => $product, 
+            "categories" => $categories
+        ]);
+    }
+
+
 }
