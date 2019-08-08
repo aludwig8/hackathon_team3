@@ -2,22 +2,23 @@
 
 namespace Hackathon\Controllers;
 
-use Slim\Views\Twig as View;
+use Hackathon\Models\Role;
 
 /**
  * 
  */
 class RoleController extends Controller
 {
-
-	/**
+/**
      * Display a listing of the resource.
      *
      */
     public function index($request, $response)
     {
-        $articles = RoleModel::find_many();
-		return $this->container->view->render($response, 'home.twig', ["article"=>$articles]);
+        $roles	= Role::find_many();
+		return $this->container->view->render($response, 'Place the appropriate view here', [
+			"roles"    => $roles
+		]);
     }
 
     /**
@@ -26,7 +27,7 @@ class RoleController extends Controller
      */
     public function create($request, $response)
     {
-        //
+        return $this->container->view->render($response, 'Place the appropriate view here', []);
     }
 
     /**
@@ -35,7 +36,11 @@ class RoleController extends Controller
      */
     public function store($request, $response)
     {
-        //
+        $role   = Role::create();
+        $role->role_name    = $request->getParam('name');
+        $role->save();
+
+        return $response->withRedirect($this->router->pathFor('role.create'));
     }
 
     /**
@@ -44,7 +49,11 @@ class RoleController extends Controller
      */
     public function show($request, $response)
     {
-        //
+        $id     = $request->getAttribute('id');
+        $role   = Role::find_one($id);
+        return $this->container->view->render($response, 'Place the appropriate view here', [
+			"role"    => $role
+		]);
     }
 
     /**
@@ -53,7 +62,7 @@ class RoleController extends Controller
      */
     public function edit($request, $response)
     {
-        //
+        return $this->container->view->render($response, 'Place the appropriate view here', []);
     }
 
     /**
@@ -62,7 +71,12 @@ class RoleController extends Controller
      */
     public function update($request, $response)
     {
-        //
+        $id         = $request->getAttribute('id');
+        $role   = Role::find_one($id);
+        $role->role_name    = $request->getParam('name');
+        $role->save();
+
+        return $response->withRedirect($this->router->pathFor('role.edit'));
     }
 
     /**
@@ -71,6 +85,10 @@ class RoleController extends Controller
      */
     public function destroy($request, $response)
     {
-        //
+        $id         = $request->getAttribute('id');
+        $role   = Role::find_one($id);
+        $role->delete();
+
+        return $response->withRedirect($this->router->pathFor('roles'));
     }
 }

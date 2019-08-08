@@ -2,21 +2,22 @@
 
 namespace Hackathon\Controllers;
 
-use Slim\Views\Twig as View;
-
+use Hackathon\Models\Category;
 /**
  * 
  */
 class CategoryController extends Controller
 {
-
 	/**
      * Display a listing of the resource.
      *
      */
     public function index($request, $response)
     {
-      
+        $categories	= Category::find_many();
+		return $this->container->view->render($response, 'Place the appropriate view here', [
+			"categories"    => $categories
+		]);
     }
 
     /**
@@ -25,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create($request, $response)
     {
-        //
+        return $this->container->view->render($response, 'Place the appropriate view here', []);
     }
 
     /**
@@ -34,7 +35,11 @@ class CategoryController extends Controller
      */
     public function store($request, $response)
     {
-        //
+        $category   = Category::create();
+        $category->category_name    = $request->getParam('name');
+        $category->save();
+
+        return $response->withRedirect($this->router->pathFor('category.create'));
     }
 
     /**
@@ -43,7 +48,11 @@ class CategoryController extends Controller
      */
     public function show($request, $response)
     {
-        //
+        $id         = $request->getAttribute('id');
+        $category	= Category::find_one($id);
+        return $this->container->view->render($response, 'Place the appropriate view here', [
+			"category"    => $category
+		]);
     }
 
     /**
@@ -52,7 +61,7 @@ class CategoryController extends Controller
      */
     public function edit($request, $response)
     {
-        //
+        return $this->container->view->render($response, 'Place the appropriate view here', []);
     }
 
     /**
@@ -61,7 +70,12 @@ class CategoryController extends Controller
      */
     public function update($request, $response)
     {
-        //
+        $id         = $request->getAttribute('id');
+        $category   = Category::find_one($id);
+        $category->category_name    = $request->getParam('name');
+        $category->save();
+
+        return $response->withRedirect($this->router->pathFor('category.edit'));
     }
 
     /**
@@ -70,6 +84,10 @@ class CategoryController extends Controller
      */
     public function destroy($request, $response)
     {
-        //
+        $id         = $request->getAttribute('id');
+        $category   = Category::find_one($id);
+        $category->delete();
+
+        return $response->withRedirect($this->router->pathFor('categories'));
     }
 }

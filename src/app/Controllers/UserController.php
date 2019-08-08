@@ -2,8 +2,6 @@
 
 namespace Hackathon\Controllers;
 
-use Hackathon\Models\UserModel;
-use Hackathon\Models\RoleModel;
 use Slim\Views\Twig as View;
 
 /**
@@ -11,42 +9,67 @@ use Slim\Views\Twig as View;
  */
 class UserController extends Controller
 {
-	function index($request, $response)
-	{
 
-		//GET + 
-		$articles = RoleModel::find_many();
-		//var_dump($articles);
-		//GET -
+	/**
+     * Display a listing of the resource.
+     *
+     */
+    public function index($request, $response)
+    {
+    
+    }
 
-		//INSERT + 
-		/*$article 			= RoleModel::create();
-		$article->role_name 	= 'Test Role';$app->request()->post('content');
-		$article->save();
-		echo "Done!";*/
-		//INSERT -
-		//die();
+    /**
+     * Show the form for creating a new resource.
+     *
+     */
+    public function create($request, $response)
+    {
+        //
+    }
 
-		return $this->container->view->render($response, 'home.twig', ["article"=>$articles]);
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     */
+    public function store($request, $response)
+    {
+        //
+    }
 
+    /**
+     * Display the specified resource.
+     *
+     */
+    public function show($request, $response)
+    {
+        //
+    }
 
-	function store($request, $response)
-	{
+    /**
+     * Show the form for editing the specified resource.
+     *
+     */
+    public function edit($request, $response)
+    {
+        //
+    }
 
-		//GET + 
-		$articles = RoleModel::find_many();
-		//var_dump($articles);
-		//GET -
+    /**
+     * Update the specified resource in storage.
+     *
+     */
+    public function update($request, $response)
+    {
+        //
+    }
 
-		//INSERT + 
-		/*$article 			= RoleModel::create();
-		$article->role_name 	= 'Test Role';$app->request()->post('content');
-		$article->save();
-		echo "Done!";*/
-		//INSERT -
-		//die();
-
-		return $response->withRedirect($this->router->pathFor('/products'));
-	}
+    /**
+     * Remove the specified resource from storage.
+     *
+     */
+    public function destroy($request, $response)
+    {
+        //
+    }
 }
