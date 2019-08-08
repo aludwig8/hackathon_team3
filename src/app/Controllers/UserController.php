@@ -136,12 +136,13 @@ class UserController extends Controller
 
         $user_email = User::where('user_email', $email)->find_one();
 
-        if($user_email->user_email == $email && $process == true){
-            $message = "$email alerady exists!";
-            $process = false;
+        if($user_email != NULL){
+            if($user_email->user_email == $email && $process == true){
+                $message = "$email alerady exists!";
+                $process = false;
+            }
         }
         
-
         if($process == true){
         	$user                     = User::create();
             $user->user_email         = $request->getParam('email');
