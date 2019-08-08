@@ -2,34 +2,83 @@
 
 namespace Hackathon\Controllers;
 
-use Hackathon\Models\UserModel;
-use Hackathon\Models\RoleModel;
-use Slim\Views\Twig as View;
+use Hackathon\Models\Product;
 
-/**
- * 
- */
 class ProductController extends Controller
 {
-	function index($request, $response)
-	{
 
-		//GET + 
-		$articles = RoleModel::find_many();
-		//var_dump($articles);
-		//GET -
+	/**
+     * Display a listing of the product.
+     *
+     */
+    public function index($request, $response)
+    {
+        $products	= Product::find_many();
+		return $this->container->view->render($response, 'home.twig', [
+			"products"	=> $products
+		]);
+    }
 
-		//INSERT + 
-		/*$article 			= RoleModel::create();
-		$article->role_name 	= 'Test Role';$app->request()->post('content');
-		$article->save();
-		echo "Done!";*/
-		//INSERT -
-		//die();
+    /**
+     * Show the form for creating a new product.
+     *
+     */
+    public function create($request, $response)
+    {
+        //
+    }
 
-		return $this->container->view->render($response, 'home.twig', ["article"=>$articles]);
-	}
+    /**
+     * Store a newly created product in storage.
+     *
+     */
+    public function store($request, $response)
+    {
+        //
+    }
 
+    /**
+     * Display the specified product.
+     *
+     */
+    public function show($request, $response)
+    {
+        //
+    }
 
-	
+    /**
+     * Show the form for editing the specified product.
+     *
+     */
+    public function edit($request, $response)
+    {
+        //
+    }
+
+    /**
+     * Update the specified product in storage.
+     *
+     */
+    public function update($request, $response)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified product from storage.
+     *
+     */
+    public function destroy($request, $response)
+    {
+        //
+    }
+
+    /**
+     * Display a listing of the product filtered by c ategory.
+     *
+     */
+    public function category($request, $response)
+    {
+        //
+    }
 }

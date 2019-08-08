@@ -1,6 +1,7 @@
 {
     "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+        "larapack/dd": "^1.1"
     },
     "require": {
         "slim/slim": "^3.12",
@@ -9,14 +10,9 @@
         "j4mie/idiorm": "^1.5",
         "respect/validation": "^1.1"
     },
-
     "autoload":{
-
     	"psr-4":{
-
     		"Hackathon\\":"src/app"
-
     	}
-
     }
 }

@@ -5,7 +5,7 @@ namespace Hackathon\Models;
 
 use Model;
 
-class CategoryModel extends Model{
+class Category extends Model{
 	
 	public static $_table = 'categories';
 

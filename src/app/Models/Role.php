@@ -5,7 +5,7 @@ namespace Hackathon\Models;
 
 use Model;
 
-class RoleModel extends Model{
+class Role extends Model{
 	
 	public static $_table = 'roles';
 

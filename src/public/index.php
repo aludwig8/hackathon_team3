@@ -17,7 +17,7 @@ $container = $app->getContainer();
 /*CONNECTION +*/
 
 ORM::configure(array(
-    'connection_string' => 'mysql:host=localhost;dbname=webshop_t3',
+    'connection_string' => 'mysql:host=localhost;dbname=webshop',
     'username' => 'root',
     'password' => ''
 ));	
