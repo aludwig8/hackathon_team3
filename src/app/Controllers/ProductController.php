@@ -157,17 +157,21 @@ class ProductController extends Controller
 
     public function cartadd($request, $response){
         
-        $product_id = $_GET['id'];
-        $product = Product::where('product_id', $product_id)->find_one();
+        if(isset($_SESSION['user']['id'])){
+            $product_id = $_GET['id'];
+            $product = Product::where('product_id', $product_id)->find_one();
 
-        $order            =         Order::create();
-        $order->order_user_id     = $_SESSION['user']['id'];
-        $order->order_product_id    = $product_id;
-        $order->order_quantity   = 1;
-        $order->order_price = $product->product_price;
-        $order->save();
+            $order            =         Order::create();
+            $order->order_user_id     = $_SESSION['user']['id'];
+            $order->order_product_id    = $product_id;
+            $order->order_quantity   = 1;
+            $order->order_price = $product->product_price;
+            $order->save();
 
-        return $response->withRedirect($this->router->pathFor('products'));
+            return $response->withRedirect($this->router->pathFor('products'));
+        }else{
+            return $response->withRedirect($this->router->pathFor('user.signin'));
+        }
     }
 
 
