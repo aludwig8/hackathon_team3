@@ -5,7 +5,7 @@ namespace Hackathon\Models;
 
 use Model;
 
-class OrderModel extends Model{
+class Order extends Model{
 	
 	public static $_table = 'orders';
 
